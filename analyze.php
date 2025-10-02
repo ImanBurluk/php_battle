@@ -1,7 +1,6 @@
 <?php
 declare(strict_types=1);
 
-// Берём первый позиционный аргумент или читаем из STDIN
 $args = $_SERVER['argv'];
 array_shift($args); // убрать имя скрипта
 
