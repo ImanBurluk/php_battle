@@ -1,0 +1,17 @@
+# По умолчанию всё текстовое → LF
+*           text=auto eol=lf
+
+# Явные исключения под Windows-скрипты
+*.bat       text eol=crlf
+*.cmd       text eol=crlf
+*.ps1       text eol=crlf
+
+# Явная фиксация для чувствительных файлов
+*.sh        text eol=lf
+*.php       text eol=lf
+*.js        text eol=lf
+*.ts        text eol=lf
+*.json      text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+*.md        text eol=lf
