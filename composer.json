@@ -1,0 +1,21 @@
+{
+  "name": "you/cli-length",
+  "type": "project",
+  "require": {},
+  "autoload": {
+    "files": [
+      "src/args.php",
+      "src/length.php",
+      "src/calc.php",
+      "src/output.php"
+    ]
+  },
+  "config": {
+    "platform": { "php": "7.4.33" },
+    "sort-packages": true
+  },
+  "scripts": {
+    "lint": "phpcs",
+    "fix": "phpcbf"
+  }
+}
