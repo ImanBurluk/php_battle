@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<ruleset name="Project PHPCS">
+    <description>Strict PSR-12 for PHP 7.4 on WSL. Enforce LF/UTF-8, 4-space indent, 120-char lines, no BOM/trailing spaces; skip vendor/IDE junk; run fast.</description>
+
+    <!-- Что проверяем -->
+    <file>bin</file>
+    <file>src</file>
+
+    <!-- Что игнорим -->
+    <exclude-pattern>vendor/*</exclude-pattern>
+    <exclude-pattern>node_modules/*</exclude-pattern>
+    <exclude-pattern>.git/*</exclude-pattern>
+    <exclude-pattern>.idea/*</exclude-pattern>
+    <exclude-pattern>var/*</exclude-pattern>
+    <exclude-pattern>tmp/*</exclude-pattern>
+
+    <!-- Ускорение и удобства вывода -->
+    <arg value="p"/> <!-- прогресс -->
+    <arg name="colors"/>
+    <arg name="parallel" value="8"/>
+    <arg name="cache" value=".phpcs.cache"/>
+    <arg name="basepath" value="."/>
+
+    <!-- Базовая кодировка -->
+    <config name="encoding" value="utf-8"/>
+
+    <!-- PSR-12 как основа -->
+    <rule ref="PSR12"/>
+
+    <!-- Лимит длины строки: 120, комментарии не считаем, жёсткого лимита нет -->
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="120"/>
+            <property name="absoluteLineLimit" value="0"/>
+            <property name="ignoreComments" value="true"/>
+        </properties>
+    </rule>
+
+    <!-- Финальная пустая строка в конце файла -->
+    <rule ref="Generic.Files.EndFileNewline"/>
+
+    <!-- Unix-концы строк (LF) -->
+    <rule ref="Generic.Files.LineEndings">
+        <properties>
+            <property name="eolChar" value="\n"/>
+        </properties>
+    </rule>
+
+    <!-- Никаких BOM -->
+    <rule ref="Generic.Files.ByteOrderMark"/>
+
+    <!-- Запрет хвостовых пробелов; проверяем даже пустые строки -->
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
+        <properties>
+            <property name="ignoreBlankLines" value="false"/>
+        </properties>
+    </rule>
+
+    <!-- Имена файлов в нижнем регистре (удобная sanity-проверка) -->
+    <rule ref="Generic.Files.LowercasedFilename"/>
+
+    <!-- (Опционально) Проверка совместимости с PHP 7.4 -->
+    <!-- Включи эти правила, если поставишь PHPCompatibility (см. команды ниже) -->
+    <!--
+    <config name="testVersion" value="7.4-"/>
+    <rule ref="PHPCompatibility"/>
+    -->
+</ruleset>

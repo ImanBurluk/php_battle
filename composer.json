@@ -1,0 +1,39 @@
+{
+  "name": "imanburluk/textcount",
+  "description": "CLI/Library to count text length",
+  "type": "library",
+  "license": "MIT",
+  "keywords": ["text", "length", "utf-8", "cli", "grapheme", "counter"],
+  "homepage": "https://github.com/ImanBurluk/textcount",
+  "support": {
+    "issues": "https://github.com/ImanBurluk/textcount/issues",
+    "source": "https://github.com/ImanBurluk/textcount"
+  },
+  "authors": [
+    { "name": "Iman Burluk", "email": "yk9iman@gmail.com" }
+  ],
+  "require": {
+    "php": "^7.4 || ^8.0",
+    "ext-mbstring": "*"
+  },
+  "suggest": {
+    "ext-intl": "Enables grapheme-aware length (grapheme_strlen)."
+  },
+  "autoload": {
+    "psr-4": {
+      "Imanburluk\\TextCount\\": "src/TextCount/"
+    }
+  },
+  "bin": [
+    "bin/textcount.php"
+  ],
+  "config": {
+    "sort-packages": true
+  },
+  "prefer-stable": true,
+  "minimum-stability": "stable",
+  "scripts": {
+    "lint": "phpcs",
+    "fix": "phpcbf"
+  }
+}
