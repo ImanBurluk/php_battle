@@ -6,7 +6,6 @@ namespace Imanburluk\TextCount;
 
 use Imanburluk\TextCount\Console\ArgParser;
 use Imanburluk\TextCount\Console\Output;
-use Imanburluk\TextCount\LengthCalculator;
 
 class TextCount
 {
