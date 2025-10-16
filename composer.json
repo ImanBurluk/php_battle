@@ -1,14 +1,27 @@
 {
-  "name": "you/cli-length",
-  "type": "project",
-  "require": {},
+  "name": "imanburluk/textcount",
+  "description": "CLI tool to count UTF-8 string length (grapheme or code points)",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Iman Burlyq",
+      "email": "yk9iman@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.4"
+  },
   "autoload": {
     "files": [
       "src/args.php",
       "src/length.php",
       "src/calc.php",
       "src/output.php"
-    ]
+    ],
+    "psr-4": {
+      "Imanburluk\\TextCount\\": "src/TextCount/"
+    }
   },
   "config": {
     "platform": { "php": "7.4.33" },
