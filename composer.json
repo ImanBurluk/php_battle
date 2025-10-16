@@ -1,6 +1,6 @@
 {
   "name": "imanburluk/textcount",
-  "description": "CLI/Library to count text length (UTF-8; grapheme-aware with intl, fallback to mbstring)",
+  "description": "CLI/Library to count text length",
   "type": "library",
   "license": "MIT",
   "keywords": ["text", "length", "utf-8", "cli", "grapheme", "counter"],
