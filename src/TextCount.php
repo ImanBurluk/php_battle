@@ -9,6 +9,9 @@ use Imanburluk\TextCount\Console\Output;
 
 class TextCount
 {
+    /**
+     * @param list<string>|null $argv
+     */
     public function run(?array $argv): void
     {
         $parser = new ArgParser();
