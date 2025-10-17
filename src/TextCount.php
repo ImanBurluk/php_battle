@@ -1,22 +1,25 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Imanburluk\TextCount;
 
-use Imanburluk\TextCount\Console\ArgParser;
-use Imanburluk\TextCount\Console\Output;
+use Imanburluk\TextCount\Contract\InputParserInterface;
+use Imanburluk\TextCount\Contract\LengthCalculatorInterface;
+use Imanburluk\TextCount\Contract\OutputInterface;
 
+/**
+ * Координатор: получает вход, считает длину, выводит результат.
+ */
 final class TextCount
 {
-    private ArgParser $parser;
-    private LengthCalculator $calculator;
-    private Output $output;
+    private InputParserInterface $parser;
+    private LengthCalculatorInterface $calculator;
+    private OutputInterface $output;
 
     public function __construct(
-        ArgParser $parser,
-        LengthCalculator $calculator,
-        Output $output
+        InputParserInterface $parser,
+        LengthCalculatorInterface $calculator,
+        OutputInterface $output
     ) {
         $this->parser = $parser;
         $this->calculator = $calculator;
