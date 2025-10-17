@@ -1,13 +1,17 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Imanburluk\TextCount\Console;
 
-class Output
+use Imanburluk\TextCount\Contract\OutputInterface;
+
+/**
+ * Вывод в STDOUT построчно.
+ */
+final class Output implements OutputInterface
 {
-    public function println(string $s): void
+    public function println(string $line): void
     {
-        fwrite(STDOUT, $s . PHP_EOL);
+        fwrite(STDOUT, $line . PHP_EOL);
     }
 }
