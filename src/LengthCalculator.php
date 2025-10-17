@@ -1,13 +1,17 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Imanburluk\TextCount;
 
-class LengthCalculator
+use Imanburluk\TextCount\Contract\LengthCalculatorInterface;
+
+/**
+ * Подсчёт длины строк в символах.
+ */
+final class LengthCalculator implements LengthCalculatorInterface
 {
-    public function calculate(string $string): int
+    public function calculate(string $input): int
     {
-        return mb_strlen($string, 'UTF-8');
+        return mb_strlen($input);
     }
 }
