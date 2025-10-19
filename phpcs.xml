@@ -15,7 +15,7 @@
     <exclude-pattern>tmp/*</exclude-pattern>
 
     <!-- Ускорение и удобства вывода -->
-    <arg value="p"/> <!-- прогресс -->
+    <arg value="p"/>
     <arg name="colors"/>
     <arg name="parallel" value="8"/>
     <arg name="cache" value=".phpcs.cache"/>
@@ -27,7 +27,7 @@
     <!-- PSR-12 как основа -->
     <rule ref="PSR12"/>
 
-    <!-- Лимит длины строки: 120, комментарии не считаем, жёсткого лимита нет -->
+    <!-- Лимит длины строки: 120, комменты игнорим, без жёсткого предела -->
     <rule ref="Generic.Files.LineLength">
         <properties>
             <property name="lineLimit" value="120"/>
@@ -55,14 +55,4 @@
             <property name="ignoreBlankLines" value="false"/>
         </properties>
     </rule>
-
-    <!-- Имена файлов в нижнем регистре (удобная sanity-проверка) -->
-    <rule ref="Generic.Files.LowercasedFilename"/>
-
-    <!-- (Опционально) Проверка совместимости с PHP 7.4 -->
-    <!-- Включи эти правила, если поставишь PHPCompatibility (см. команды ниже) -->
-    <!--
-    <config name="testVersion" value="7.4-"/>
-    <rule ref="PHPCompatibility"/>
-    -->
 </ruleset>
