@@ -9,5 +9,6 @@ namespace Imanburluk\TextCount\Contract;
  */
 interface OutputInterface
 {
-    public function println(string $line): void;
+    /** Записывает строку в приёмник (консоль/файл/и т.д.) */
+    public function write(string $line): void;
 }
