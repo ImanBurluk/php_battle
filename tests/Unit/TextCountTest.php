@@ -1,26 +1,36 @@
 <?php
 declare(strict_types=1);
 
+use Imanburluk\TextCount\Console\TextCountApp;
 use Imanburluk\TextCount\TextCount;
-use Imanburluk\TextCount\Contract\InputParserInterface;
-use Imanburluk\TextCount\Contract\LengthCalculatorInterface;
+use Imanburluk\TextCount\Contract\InputInterface;
 use Imanburluk\TextCount\Contract\OutputInterface;
+use Imanburluk\TextCount\Contract\LengthCalculatorInterface;
 use PHPUnit\Framework\TestCase;
 
 final class TextCountTest extends TestCase
 {
     public function testRunCoordinatesAllParts(): void
     {
-        $parser = $this->createMock(InputParserInterface::class);
-        $parser->method('parse')->willReturn('abc');
+        // arrange
+        $input = $this->createMock(InputInterface::class);
+        $input->method('read')->willReturn('hello');
 
-        $calc = $this->createMock(LengthCalculatorInterface::class);
-        $calc->method('calculate')->with('abc')->willReturn(3);
+        $calculator = $this->createMock(LengthCalculatorInterface::class);
+        $calculator->method('calculate')->with('hello')->willReturn(5);
 
-        $out = $this->createMock(OutputInterface::class);
-        $out->expects(self::once())->method('println')->with('3');
+        $output = $this->createMock(OutputInterface::class);
+        $output->expects($this->once())
+            ->method('write')
+            ->with('5');
 
-        $app = new TextCount($parser, $calc, $out);
-        $app->run(['script.php', 'abc']);
+        $service = new TextCount($calculator);
+        $app = new TextCountApp($input, $service, $output);
+
+        // act
+        $app->run();
+
+        // assert — проверки уже заданы в моках
+        $this->addToAssertionCount(1);
     }
 }
