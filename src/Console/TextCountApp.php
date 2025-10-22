@@ -9,16 +9,26 @@ use Imanburluk\TextCount\Contract\OutputInterface;
 
 final class TextCountApp
 {
-    public function __construct(
-        InputInterface $input,
-        TextCount $service,
-        OutputInterface $output
-    ) {}
+    /** @var InputInterface */
+    private $input;
+
+    /** @var TextCount */
+    private $service;
+
+    /** @var OutputInterface */
+    private $output;
+
+    public function __construct(InputInterface $input, TextCount $service, OutputInterface $output)
+    {
+        $this->input   = $input;
+        $this->service = $service;
+        $this->output  = $output;
+    }
 
     public function run(): void
     {
         $text   = $this->input->read();
         $length = $this->service->count($text);
-        $this->output->write((string)$length);
+        $this->output->write((string) $length);
     }
 }
