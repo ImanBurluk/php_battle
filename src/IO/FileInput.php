@@ -9,8 +9,12 @@ use RuntimeException;
 
 final class FileInput implements InputInterface
 {
+    /** @var string */
+    private $path;
+
     public function __construct(string $path)
     {
+        $this->path = $path;
     }
 
     public function read(): string
@@ -22,6 +26,6 @@ final class FileInput implements InputInterface
         if ($data === false) {
             throw new RuntimeException("Failed to read file: {$this->path}");
         }
-        return (string)$data;
+        return (string) $data;
     }
 }
