@@ -9,7 +9,9 @@ use RuntimeException;
 
 final class FileOutput implements OutputInterface
 {
-    public function __construct(string $path, bool $append = false) {}
+    public function __construct(string $path, bool $append = false)
+    {
+    }
 
     public function write(string $line): void
     {

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Imanburluk\TextCount\IO;
@@ -8,7 +9,9 @@ use RuntimeException;
 
 final class UrlInput implements InputInterface
 {
-    public function __construct(string $url, int $timeoutSec = 5) {}
+    public function __construct(string $url, int $timeoutSec = 5)
+    {
+    }
 
     public function read(): string
     {

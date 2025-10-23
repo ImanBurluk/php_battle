@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Imanburluk\TextCount\IO;
@@ -8,7 +9,9 @@ use RuntimeException;
 
 final class FileInput implements InputInterface
 {
-    public function __construct(string $path) {}
+    public function __construct(string $path)
+    {
+    }
 
     public function read(): string
     {
