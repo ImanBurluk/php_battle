@@ -1,16 +1,42 @@
 <?php
+
 declare(strict_types=1);
 
-use Imanburluk\TextCount\LengthCalculator;
+use Imanburluk\TextCount\MbLengthCalculator;
 use PHPUnit\Framework\TestCase;
 
 final class LengthCalculatorTest extends TestCase
 {
-    public function testCalculate(): void
+    /** @var MbLengthCalculator */
+    private $calc;
+
+    protected function setUp(): void
     {
-        $calc = new LengthCalculator();
-        self::assertSame(0, $calc->calculate(''));
-        self::assertSame(3, $calc->calculate('abc'));
-        self::assertSame(2, $calc->calculate('йо')); // проверка mb_strlen
+        $this->calc = new MbLengthCalculator();
+    }
+
+    /**
+     * @dataProvider textCases
+     */
+    public function testCalculate(string $input, int $expected): void
+    {
+        // Arrange done in setUp + provider
+
+        // Act
+        $len = $this->calc->calculate($input);
+
+        // Assert (один ассерт)
+        self::assertSame($expected, $len);
+    }
+
+    public function textCases(): array
+    {
+        return [
+            'empty'         => ['', 0],
+            'ascii'         => ['abc', 3],
+            'multibyte'     => ['йо', 2],
+            'with spaces'   => ['a b', 3],
+            'emoji'         => ['👍', 1],
+        ];
     }
 }

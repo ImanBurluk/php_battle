@@ -11,7 +11,7 @@ use Imanburluk\TextCount\Contract\OutputInterface;
  */
 final class Output implements OutputInterface
 {
-    public function println(string $line): void
+    public function write(string $line): void
     {
         fwrite(STDOUT, $line . PHP_EOL);
     }

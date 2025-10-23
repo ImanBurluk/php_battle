@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Imanburluk\TextCount\Contract;
 
-interface OutputInterface
+interface InputInterface
 {
-    public function write(string $line): void;
+    public function read(): string;
 }
