@@ -8,7 +8,8 @@ use Imanburluk\TextCount\Contract\LengthCalculatorInterface;
 
 final class TextCount
 {
-    private LengthCalculatorInterface $calculator;
+    /** @var LengthCalculatorInterface */
+    private $calculator;
 
     public function __construct(LengthCalculatorInterface $calculator)
     {
