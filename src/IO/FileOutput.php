@@ -9,8 +9,16 @@ use RuntimeException;
 
 final class FileOutput implements OutputInterface
 {
+    /** @var string */
+    private $path;
+
+    /** @var bool */
+    private $append;
+
     public function __construct(string $path, bool $append = false)
     {
+        $this->path   = $path;
+        $this->append = $append;
     }
 
     public function write(string $line): void
