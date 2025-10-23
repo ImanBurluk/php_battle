@@ -7,8 +7,14 @@ use Imanburluk\TextCount\Contract\InputInterface;
 
 final class ArgvInput implements InputInterface
 {
+
+    /** @var list<string> $argv */
+    private array $argv;
+
     /** @param list<string>|null $argv */
-    public function __construct(?array $argv) {}
+    public function __construct(?array $argv) {
+        $this -> argv = $argv;
+    }
 
     public function read(): string
     {
