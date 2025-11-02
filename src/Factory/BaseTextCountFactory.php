@@ -22,7 +22,7 @@ abstract class BaseTextCountFactory implements TextCountFactoryInterface
 
     protected function shouldUseMb(?string $encoding): bool
     {
-        // 1) Явно просили UTF-* → MB
+        // UTF-* → MB
         if ($encoding && \strpos($encoding, 'UTF') === 0) {
             return true;
         }

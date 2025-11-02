@@ -17,7 +17,6 @@ final class TextCountFactory extends BaseTextCountFactory
 
     protected function createMbCalculator(?string $encoding = null): LengthCalculatorInterface
     {
-        // ваш MbLengthCalculator уже умеет принимать encoding — если нет, добавьте сеттер/конструктор
         return new MbLengthCalculator($encoding ?? 'UTF-8');
     }
 }
