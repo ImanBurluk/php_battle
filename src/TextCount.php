@@ -12,32 +12,34 @@ final class TextCount
 {
     private static ?TextCountFactoryInterface $factory = null;
 
-    /**
-     * Позволяем DI/тестам подменять фабрику.
-     */
     public static function setFactory(TextCountFactoryInterface $factory): void
     {
         self::$factory = $factory;
     }
 
-    /**
-     * Главный public API: получить длину строки.
-     *
-     * @param string      $text
-     * @param string|null $encoding null → авто (mb если доступно)
-     */
     public static function len(string $text, ?string $encoding = null): int
     {
         $factory = self::$factory ?? new TextCountFactory();
-
         $calculator = $factory->createLengthCalculator($encoding);
 
         return self::safeLength($calculator, $text);
     }
 
+    public static function count(string $text, ?string $encoding = null): int
+    {
+        // BC-алиас
+        return self::len($text, $encoding);
+    }
+
     private static function safeLength(LengthCalculatorInterface $calculator, string $text): int
     {
-        // Здесь можно централизованно ловить исключения и нормализовывать ошибки.
+        // Надёжно работает и со старыми реализациями
+        if (\method_exists($calculator, 'calculate')) {
+            return $calculator->calculate($text);
+        }
+
+        // fallback для BC
         return $calculator->length($text);
     }
+
 }
