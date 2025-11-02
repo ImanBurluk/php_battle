@@ -8,8 +8,10 @@ use Imanburluk\TextCount\Contract\LengthCalculatorInterface;
 
 final class MbLengthCalculator implements LengthCalculatorInterface
 {
-    public function calculate(string $text): int
+    public function __construct(string $encoding = 'UTF-8') {}
+
+    public function length(string $text): int
     {
-        return mb_strlen($text);
+        return \mb_strlen($text, $this->encoding);
     }
 }
