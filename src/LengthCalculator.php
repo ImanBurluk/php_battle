@@ -11,7 +11,7 @@ use Imanburluk\TextCount\Contract\LengthCalculatorInterface;
  */
 final class LengthCalculator implements LengthCalculatorInterface
 {
-    public function calculate(string $input): int
+    public function length(string $input): int
     {
         return mb_strlen($input);
     }
