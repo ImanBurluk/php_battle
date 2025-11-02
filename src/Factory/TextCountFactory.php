@@ -4,18 +4,20 @@ declare(strict_types=1);
 
 namespace Imanburluk\TextCount\Factory;
 
-use Imanburluk\TextCount\TextCount;
 use Imanburluk\TextCount\Contract\LengthCalculatorInterface;
+use Imanburluk\TextCount\LengthCalculator;
+use Imanburluk\TextCount\MbLengthCalculator;
 
-final class TextCountFactory
+final class TextCountFactory extends BaseTextCountFactory
 {
-    public static function createDefault(): TextCount
+    protected function createAsciiCalculator(): LengthCalculatorInterface
     {
-        return new TextCount(LengthCalculatorFactory::createMb());
+        return new LengthCalculator();
     }
 
-    public static function createWithCalculator(LengthCalculatorInterface $calculator): TextCount
+    protected function createMbCalculator(?string $encoding = null): LengthCalculatorInterface
     {
-        return new TextCount($calculator);
+        // ваш MbLengthCalculator уже умеет принимать encoding — если нет, добавьте сеттер/конструктор
+        return new MbLengthCalculator($encoding ?? 'UTF-8');
     }
 }
